@@ -963,7 +963,7 @@ class Carbon extends DateTime implements JsonSerializable
      */
     public static function createFromTimestampMs($timestamp, $tz = null)
     {
-        return static::createFromFormat('U.u', number_format($timestamp / 1000, 6, '.', ''))
+        return static::createFromFormat('U:u', number_format($timestamp / 1000, 6, ':', ''))
             ->setTimezone($tz);
     }
 
