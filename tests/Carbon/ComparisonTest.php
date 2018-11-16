@@ -230,7 +230,7 @@ class ComparisonTest extends AbstractTestCase
 
     public function testClosestWithMicroseconds()
     {
-        $this->requirePhpVersion('7.1.8');
+        $this->requirePhpVersion('7.1.7');
 
         $baseDate = Carbon::parse('2018-10-11 20:59:06.500000');
         $closestDate = Carbon::parse('2018-10-11 20:59:06.600000');
@@ -241,7 +241,7 @@ class ComparisonTest extends AbstractTestCase
 
     public function testClosestWithFarDates()
     {
-        $this->requirePhpVersion('7.1.8');
+        $this->requirePhpVersion('7.1.7');
 
         $baseDate = Carbon::parse('2018-10-11 20:59:06.500000');
         $closestDate = Carbon::parse('-1625-10-11 20:59:06.600000');
@@ -270,7 +270,7 @@ class ComparisonTest extends AbstractTestCase
 
     public function testFarthestWithMicroseconds()
     {
-        $this->requirePhpVersion('7.1.8');
+        $this->requirePhpVersion('7.1.7');
 
         $baseDate = Carbon::parse('2018-10-11 20:59:06.500000');
         $closestDate = Carbon::parse('2018-10-11 20:59:06.600000');
@@ -281,7 +281,7 @@ class ComparisonTest extends AbstractTestCase
 
     public function testFarthestWithFarDates()
     {
-        $this->requirePhpVersion('7.1.8');
+        $this->requirePhpVersion('7.1.7');
 
         $baseDate = Carbon::parse('2018-10-11 20:59:06.500000');
         $closestDate = Carbon::parse('-1625-10-11 20:59:06.600000');

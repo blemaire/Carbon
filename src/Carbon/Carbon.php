@@ -300,6 +300,16 @@ class Carbon extends DateTime implements JsonSerializable
      */
     protected static $humanDiffOptions = self::NO_ZERO_DIFF;
 
+    protected static function hasMicroSecondsBug()
+    {
+        static $hasBug = null;
+        if ($hasBug === null) {
+            $hasBug = DateTime::createFromFormat('U.u', '1.234')->format('u') !== '234000';
+        }
+
+        return $hasBug;
+    }
+
     /**
      * @param int $humanDiffOptions
      */
@@ -953,7 +963,7 @@ class Carbon extends DateTime implements JsonSerializable
      */
     public static function createFromTimestampMs($timestamp, $tz = null)
     {
-        return static::createFromFormat('U.u', sprintf('%F', $timestamp / 1000))
+        return static::createFromFormat('U.u', number_format($timestamp / 1000, 6, '.', ''))
             ->setTimezone($tz);
     }
 
@@ -4748,7 +4758,7 @@ class Carbon extends DateTime implements JsonSerializable
         }
         $this->addSeconds($intIncrement);
 
-        if (version_compare(PHP_VERSION, '7.1.8-dev', '>=')) {
+        if (version_compare(PHP_VERSION, '7.1.0-dev', '>=')) {
             $this->setTime($this->hour, $this->minute, $this->second, $micro);
         }
 
