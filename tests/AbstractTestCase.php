@@ -49,9 +49,9 @@ abstract class AbstractTestCase extends TestCase
 
     protected function excludePhpVersionsRange($from, $to)
     {
-        if (version_compare(PHP_VERSION, "$from-dev", '>=') && version_compare(PHP_VERSION, $to, '<=')) {
-            $this->markTestSkipped("Test disabled for PHP from version $from to $to");
-        }
+//        if (version_compare(PHP_VERSION, "$from-dev", '>=') && version_compare(PHP_VERSION, $to, '<=')) {
+//            $this->markTestSkipped("Test disabled for PHP from version $from to $to");
+//        }
     }
 
     protected function tearDown()
