@@ -885,6 +885,11 @@ class Carbon extends DateTime implements JsonSerializable
      */
     public static function createFromFormat($format, $time, $tz = null)
     {
+        if (strpos((string) .1, '.') === false) {
+            $locale = setlocale(LC_NUMERIC, '0');
+            setlocale(LC_NUMERIC, 'C');
+        }
+
         // First attempt to create an instance, so that error messages are based on the unmodified format.
         $date = self::createFromFormatAndTimezone($format, $time, $tz);
         $lastErrors = parent::getLastErrors();
@@ -914,7 +919,15 @@ class Carbon extends DateTime implements JsonSerializable
             $instance = static::instance($date);
             $instance::setLastErrors($lastErrors);
 
+            if (isset($locale)) {
+                setlocale(LC_NUMERIC, $locale);
+            }
+
             return $instance;
+        }
+
+        if (isset($locale)) {
+            setlocale(LC_NUMERIC, $locale);
         }
 
         throw new InvalidArgumentException(implode(PHP_EOL, $lastErrors['errors']));
@@ -963,7 +976,7 @@ class Carbon extends DateTime implements JsonSerializable
      */
     public static function createFromTimestampMs($timestamp, $tz = null)
     {
-        return static::createFromFormat('U:u', number_format($timestamp / 1000, 6, ':', ''))
+        return static::createFromFormat('U.u', sprintf('%F', $timestamp / 1000))
             ->setTimezone($tz);
     }
 
