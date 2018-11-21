@@ -12,17 +12,18 @@ to get "versions"
 Use `echo phpversion();`
 to get PHP version.
 
-Some issues can depends on your context, settings,
-macros, timezone, language. So to be sure the code
-you give is enough to reproduce your bug, try it
-first in:
+Some bugs may be related to your context, settings,
+macros, timezone or language. For that reason, try to
+reproduce your bug using the below editor:
 https://try-carbon.herokuapp.com/?theme=xcode&export&embed
 
-You can use the [Options] button to change the version
-then when you get the bug with this editor, you can use
-the [Export] button, copy the link of the opened tab,
-then paste it in the issue. Then we can immediatly get
-your issue.
+Use the [Options] button to change the version of Carbon
+you wish to use.
+
+When you can reproduce the bug you can use the [Export] 
+button. Copy the link of the newly opened tab and paste 
+it in this issue, this way we can very easily reproduce 
+your bug.
 -->
 
 I expected to get:
@@ -30,10 +31,9 @@ I expected to get:
 6
 ```
 <!--
-Always give your expectations. Each use has their owns.
-You may want daylight saving time to be taken into account,
-someone else want it to be ignored. You may want timezone
-to be used in comparisons, someone else may not, etc.
+Always specify your expectations, each use has their own.
+You may want to account for daylight saving time or 
+timezones, someone else may not.
 -->
 
 But I actually get:
